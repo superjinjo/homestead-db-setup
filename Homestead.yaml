@@ -1,0 +1,6 @@
+---
+# Set up your Homestead.yaml file like normal and copy and paste the snip below
+
+copy:
+    - from: ~/.homestead/migrate-all.sh
+      to: /home/vagrant/
