@@ -1,6 +1,37 @@
 ---
-# Set up your Homestead.yaml file like normal and copy and paste the snip below
+ip: "192.168.10.10"
+memory: 2048
+cpus: 1
+provider: virtualbox
 
+authorize: ~/.ssh/id_rsa.pub
+
+keys:
+    - ~/.ssh/id_rsa
+
+folders:
+    - map: ~/path/to/project-a
+      to: /home/vagrant/project-a
+    - map: ~/path/to/project-b
+      to: /home/vagrant/project-b
+
+sites:
+    - map: project-a.app
+      to: /home/vagrant/project-a/public
+    - map: project-b.app
+      to: /home/vagrant/project-b/public
+
+databases:
+    - project_a_db
+    - project_b_db
+
+variables:
+    - key: 'APP_ENV'
+      value: 'local'
+    - key: 'APP_DEBUG'
+      value: 'true'
+
+# This is the important part for running the script      
 copy:
     - from: ~/.homestead/migrate-all.sh
       to: /home/vagrant/
